@@ -20,9 +20,11 @@ module slipRing () {
 
 module disk (h,d) {
     color("Moccasin")
-    difference() {
-        cylinder(h=h,d=d);
-        translate([0,0,-0.5]) cylinder(h=h+1,d=22);
+    minkowski() {
+        cylinder(h=h/2,d=d);
+        translate([0,0,h/4]) 
+        scale([5,5,h/4]) 
+        sphere(1);
     }
 }
 
