@@ -1,5 +1,8 @@
+// Convert inches to mm
 function inches (x) = x * 25.4;
 
+// Logisaf CM-3P30
+// 30A, 3 wires, 600VDC/VAC
 module slipRing () {
     cylinder(h=47,d=22);
     translate([0,0,5]) difference() {
@@ -20,7 +23,11 @@ module disk (h,d) {
     }
 }
 
+// Shepherd Hardware 9549
+// 12in lazy susan, 1000lb load capacity
 module bearing () {
+    // These dimensions are not known exactly.
+    // No technical drawing was available. 
     h=inches(1/4);
     od=inches(12);
     id0=inches(7);
@@ -34,4 +41,4 @@ module bearing () {
 
 translate([0,0,8]) disk(h=inches(1), d=inches(24));
 slipRing();
-bearing();
+translate([0,0,8-inches(1/4)]) bearing();
