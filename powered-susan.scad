@@ -42,11 +42,19 @@ module bearing () {
     }
 }
 
+module powerStrip () {
+    cube([inches(1.97),inches(9.84),inches(1.57)]);
+}
+
 module poweredSusan () {
     translate([0,0,8]) 
     disk(h=inches(1), d=inches(24));
+    
     slipRing();
+    
     translate([0,0,8-inches(1/4)]) bearing();
+    
+    translate([-inches(1.97)/2,-inches(9.84)/2,50])
+    powerStrip();
 }
-
 poweredSusan();
